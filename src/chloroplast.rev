@@ -1,0 +1,96 @@
+# m_matschiner Wed Apr 18 10:33:20 CEST 2018
+
+# Read the input.
+data <- readDiscreteCharacterData("../res/align/chloroplast.aligned.gblocks.subset.nex")
+n_species <- data.ntaxa()
+taxa <- data.taxa()
+n_samples <- data.ntaxa()
+n_branches <- n_samples*2 - 2
+
+# Initialize counters for moves and monitors.
+mvi = 0
+mni = 0
+
+# Set up the exchangeability rates.
+er_prior <- v(1,1,1,1,1,1)
+er ~ dnDirichlet(er_prior)
+moves[++mvi] = mvSimplexElementScale(er)
+
+# Set up the stationary frequencies.
+pi_prior <- v(1,1,1,1)
+pi ~ dnDirichlet(pi_prior)
+moves[++mvi] = mvSimplexElementScale(pi)
+
+# Make the GTR model.
+Q := fnGTR(er,pi)
+
+# Add an gamma parameter for among-site rate variation.
+alpha_prior_mean <- ln(5.0)
+alpha_prior_sd <- 0.587405
+alpha ~ dnLognormal( alpha_prior_mean, alpha_prior_sd )
+gamma_rates := fnDiscretizeGamma( alpha, alpha, 4 )
+moves[++mvi] = mvScale(alpha, weight=1.0)
+
+# Add a proportion of invariable sites.
+pinvar ~ dnBeta(1,1)
+moves[++mvi] = mvScale(pinvar, lambda=0.1, weight=2.0)
+moves[++mvi] = mvSlide(pinvar, delta=10.0, weight=2.0)
+
+# Place a prior on the root age.
+root_time ~ dnNormal(0.7054, sd = 0.1818, min = 0.0, max = 1.5)
+moves[++mvi] = mvSlide(root_time, delta=0.01, weight=0.1)
+moves[++mvi] = mvSlide(root_time, delta=0.1, weight=0.1)
+
+# Set up the birth-death model of diversification.
+birth_rate_batatas_trifida ~ dnExponential(10)
+moves[++mvi] = mvScale(birth_rate_batatas_trifida, lambda=0.01, weight=1)
+moves[++mvi] = mvScale(birth_rate_batatas_trifida, lambda=0.1, weight=1)
+moves[++mvi] = mvScale(birth_rate_batatas_trifida, lambda=1, weight=1)
+death_rate_batatas_trifida ~ dnExponential(10)
+moves[++mvi] = mvScale(death_rate_batatas_trifida, lambda=0.01, weight=1)
+moves[++mvi] = mvScale(death_rate_batatas_trifida, lambda=0.1, weight=1)
+moves[++mvi] = mvScale(death_rate_batatas_trifida, lambda=1, weight=1)
+
+# Assume that species sampling is complete.
+rho <- 1
+
+# Set up the tree element.
+timetree ~ dnBDP(lambda=birth_rate_batatas_trifida, mu=death_rate_batatas_trifida, rho=rho, rootAge=root_time, samplingStrategy="uniform", condition="nTaxa", taxa=taxa)
+moves[++mvi] = mvNarrow(timetree, weight=5.0)
+moves[++mvi] = mvNNI(timetree, weight=1.0)
+moves[++mvi] = mvFNPR(timetree, weight=5.0)
+moves[++mvi] = mvFNPR(timetree, weight=2.0)
+moves[++mvi] = mvSubtreeScale(timetree, weight=3.0)
+moves[++mvi] = mvNodeTimeSlideUniform(timetree, weight=15.0)
+
+# Set up the uncorrelated clock model.
+NUM_RATE_CATEGORIES = 10
+ucln_mean ~ dnUnif(1E-6, 1)
+ucln_log_mean := ln( ucln_mean )
+ucln_sigma ~ dnExponential(10.0)
+moves[++mvi] = mvScale(ucln_mean, lambda=0.5, weight=5.0)
+moves[++mvi] = mvScale(ucln_sigma, lambda=0.5, weight=5.0)
+rate_categories := fnDiscretizeDistribution(dnLnorm(ucln_log_mean, ucln_sigma),NUM_RATE_CATEGORIES)
+rate_probs <- simplex(rep(1, NUM_RATE_CATEGORIES))
+for (j in 1:n_branches) {
+    # for each branch pull from one of the rate categories
+    branch_rates[j] ~ dnMixture(rate_categories, rate_probs)
+    moves[++mvi] = mvMixtureAllocation(branch_rates[j], weight=2.0)
+}
+mean_rt := mean(branch_rates)
+
+# Combine all model elements.
+seq ~ dnPhyloCTMC(tree=timetree, Q=Q, siteRates=gamma_rates, pInv=pinvar, branchRates=branch_rates, type="DNA")
+seq.clamp(data)
+
+# Wrap the model.
+mymodel = model(Q)
+
+# Set up monitors.
+monitors[++mni] = mnModel(filename="../res/revbayes/chloroplast.aligned.gblocks.subset.log", printgen=500, separator = TAB)
+monitors[++mni] = mnFile(filename = "../res/revbayes/chloroplast.aligned.gblocks.subset.trees", printgen=500, separator = TAB, timetree)
+monitors[++mni] = mnScreen(printgen=100, ucln_mean, root_time)
+
+# Run the mcmc.
+mymcmc = mcmc(mymodel, monitors, moves, nruns=1)
+mymcmc.run(generations=5000000)

@@ -1,0 +1,340 @@
+x <- seq(0,10,0.01)
+y <- dgamma(x,9,2)
+plot(x,y,type="l")
+y <- dgamma(x,9,20)
+plot(x,y,type="l")
+y <- dgamma(x,11.75,109.73)
+plot(x,y,type="l")
+plot(x,y,type="l",xlim=c(0,0.1))
+plot(x,y,type="l",xlim=c(0,1))
+y <- dgamma(x,10,100)
+y <- dgamma(x,1,10)
+plot(x,y,type="l",xlim=c(0,1))
+y <- dgamma(x,2,20)
+plot(x,y,type="l",xlim=c(0,1))
+y <- dgamma(x,3,30)
+plot(x,y,type="l",xlim=c(0,1))
+y <- dgamma(x,4,40)
+plot(x,y,type="l",xlim=c(0,1))
+y <- dgamma(x,5,50)
+plot(x,y,type="l",xlim=c(0,1))
+y <- dgamma(x,5,5)
+plot(x,y,type="l",xlim=c(0,1))
+plot(x,y,type="l",xlim=c(0,10))
+plot(x,y,type="l",xlim=c(0,1))
+y <- dgamma(x,2,2)
+plot(x,y,type="l",xlim=c(0,1))
+y <- dgamma(x,3,3)
+plot(x,y,type="l",xlim=c(0,1))
+plot(x,y,type="l",xlim=c(0,10))
+library(ape)
+?chronos
+?chisq
+?dchisq
+pchisq(24,2)
+qchisq(24,2)
+dchisq(24,2)
+dchisq(24,2,lower.tail = TRUE)
+pchisq(24,2,lower.tail = TRUE)
+pchisq(24,2,lower.tail = FALSE)
+pchisq(2.6,3,lower.tail = FALSE)
+?dchisq
+pchisq(2.6,3,lower.tail = TRUE)
+x <- seq(0,10,0.1)
+x
+pgamma
+?pgamma
+y <- dgamma(x)
+y <- dgamma(x,1,1)
+plot(x,y)
+plot(x,y,type=l)
+plot(x,y,type="l")
+y <- dgamma(x,0.5,1)
+plot(x,y,type="l")
+y <- dgamma(x,2,1)
+plot(x,y,type="l")
+y <- dgamma(x,4,1)
+plot(x,y,type="l")
+y <- dgamma(x,3,1)
+plot(x,y,type="l")
+y <- dgamma(x,0.5,1)
+plot(x,y,type="l")
+y <- dgamma(x,3,1)
+plot(x,y,type="l")
+y <- dgamma(x,0.5,1,ylim=c(0,1))
+y <- dgamma(x,0.5,1)
+plot(x,y,type="l",ylim=c(0,1))
+plot(x,y,type="l",ylim=c(0,1),col="blue")
+plot(x,y,type="l",ylim=c(0,1),col="2D8ACA")
+plot(x,y,type="l",ylim=c(0,1),col="#2D8ACA")
+plot(x,dgamma(x,0.5,1),type="l",ylim=c(0,1),col="#2D8ACA")
+lines(x,dgamma(x,1,1),type="l",col="#29A198")
+lines(x,dgamma(x,2,1),type="l",col="#84993B")
+lines(x,dgamma(x,1.5,1),type="l",col="#84993B")
+plot(x,dgamma(x,0.5,1),type="l",ylim=c(0,1),col="#2D8ACA")
+lines(x,dgamma(x,1,1),type="l",col="#29A198")
+lines(x,dgamma(x,1.5,1),type="l",col="#84993B")
+lines(x,dgamma(x,2,1),type="l",col="#C77E29")
+lines(x,dgamma(x,3,1),type="l",col="#CB573A")
+lines(x,dgamma(x,4,1),type="l",col="#D44586")
+x <- seq(0,8,0.1)
+y <- dnorm(x,3,sd=2)
+plot(x,y)
+y <- dnorm(x,3,sd=1)
+plot(x,y,type="l")
+?dnorm
+pnorm(x)
+?dnorm
+qnorm(x)
+qnorm(y)
+qnorm(0.025,3)
+qnorm(0.095,3)
+qnorm(0.975,3)
+qnorm(0.25,3)
+qnorm(0.75,3)
+y <- dnorm(x,3,sd=1) + 0.1 * dnorm(x,5,sd=0.5)
+plot(x,y,type="l")
+y <- dnorm(x,3,sd=1) + 0.1 * dnorm(x,7,sd=0.5)
+plot(x,y,type="l")
+y <- dnorm(x,3,sd=1) + 0.1 * dnorm(x,7,sd=0.75)
+plot(x,y,type="l")
+y <- dnorm(x,3,sd=1) + 0.3 * dnorm(x,7,sd=0.75)
+plot(x,y,type="l")
+?pdf
+t <- read.table("~/Documents/Professional/Positions/2013_2017_Oslo/Projects/opsin_story/rh1_gene_tree_inference/res/tables/diretmidae_ages.txt")
+hist(t)
+hist(t$V1)
+dens(t$V1)
+density(t$V1)
+plot(density(t$V1))
+plot(density(t$V1),xlim=c(0,50))
+t <- read.table("~/Documents/Professional/Positions/2013_2017_Oslo/Projects/opsin_story/rh1_gene_tree_inference/res/tables/age_distributions_speciation.txt")
+plot(density(t$V1))
+plot(density(t$V1),xlim=c(0,50))
+plot(density(t$V1),xlim=c(0,50),ylim=c(0,0.8))
+plot(density(t$V1),xlim=c(0,50),ylim=c(0,0.08))
+plot(density(t$V1),xlim=c(0,50),ylim=c(0,0.08),main="Speciation")
+t <- read.table("~/Documents/Professional/Positions/2013_2017_Oslo/Projects/opsin_story/rh1_gene_tree_inference/res/tables/age_distributions_duplication_ancestral.txt")
+plot(density(t$V1),xlim=c(0,50),ylim=c(0,0.08),main="Speciation")
+plot(density(t$V1),xlim=c(0,50),ylim=c(0,0.08),main="Ancestral duplication")
+?density
+plot(density(t$V1),xlim=c(0,50),ylim=c(0,0.08),main="Ancestral duplication")
+plot(density(t$V1,bw=1),xlim=c(0,50),ylim=c(0,0.08),main="Ancestral duplication")
+plot(density(t$V1,bw=2),xlim=c(0,50),ylim=c(0,0.08),main="Ancestral duplication")
+plot(density(t$V1),xlim=c(0,50),ylim=c(0,0.08),main="Ancestral duplication")
+t <- read.table("~/Documents/Professional/Positions/2013_2017_Oslo/Projects/opsin_story/rh1_gene_tree_inference/res/tables/age_distributions_speciation.txt")
+plot(density(t$V1,bw=2),xlim=c(0,50),ylim=c(0,0.08),main="Ancestral duplication")
+t <- read.table("~/Documents/Professional/Positions/2013_2017_Oslo/Projects/opsin_story/rh1_gene_tree_inference/res/tables/age_distributions_duplication_diretmus.txt")
+plot(density(t$V1,bw=2),xlim=c(0,50),ylim=c(0,0.08),main="Ancestral Diretmus")
+t <- read.table("~/Documents/Professional/Positions/2013_2017_Oslo/Projects/opsin_story/rh1_gene_tree_inference/res/tables/age_distributions_duplication_diretmoides.txt")
+plot(density(t$V1,bw=2),xlim=c(0,50),ylim=c(0,0.08),main="Ancestral Diretmoides")
+plot(density(t$V1,bw=2),xlim=c(0,50),ylim=c(0,0.12),main="Ancestral Diretmoides")
+plot(density(t$V1,bw=2),xlim=c(0,50),ylim=c(0,0.1),main="Ancestral Diretmoides")
+t <- read.table("~/Documents/Professional/Positions/2013_2017_Oslo/Projects/opsin_story/rh1_gene_tree_inference/res/tables/age_distributions_duplication_diretmus.txt")
+plot(density(t$V1,bw=2),xlim=c(0,50),ylim=c(0,0.1),main="Ancestral Diretmus")
+plot(density(t$V1,bw=2),xlim=c(0,50),ylim=c(0,0.1),main="Duplication Diretmus")
+t <- read.table("~/Documents/Professional/Positions/2013_2017_Oslo/Projects/opsin_story/rh1_gene_tree_inference/res/tables/age_distributions_duplication_diretmoides.txt")
+plot(density(t$V1,bw=2),xlim=c(0,50),ylim=c(0,0.1),main="Duplication Diretmoides")
+t <- read.table("~/Documents/Professional/Positions/2013_2017_Oslo/Projects/opsin_story/rh1_gene_tree_inference/res/tables/age_distributions_duplication_ancestral.txt")
+plot(density(t$V1,bw=2),xlim=c(0,50),ylim=c(0,0.1),main="Duplication Ancestral")
+t <- read.table("~/Documents/Professional/Positions/2013_2017_Oslo/Projects/opsin_story/rh1_gene_tree_inference/res/tables/age_distributions_speciation.txt")
+plot(density(t$V1,bw=2),xlim=c(0,50),ylim=c(0,0.1),main="Speciation")
+x <- seq(0,100,0.1)
+x
+?dgamma
+y <- dgamma(x,shape=1)
+plot(x,y)
+plot(x,y,type="l")
+y <- dgamma(x,shape=87)
+plot(x,y,type="l")
+library(ape)
+?dist.dna
+a <- c(0,2,3,4)
+b <- c(1,2,0,0)
+c <- min(a,b)
+c
+c <- pmin(a,b)
+c
+x <- seq(0,100,0.1)
+y <- dgamma(x,11.75,109,73)
+y <- dgamma(x,11.75,109.73)
+plot(x,y)
+x <- seq(0,1,0.001)
+y <- dgamma(x,11.75,109.73)
+plot(x,y)
+qlnorm(0.5,1.9,2.2)
+qlnorm(0.95,1.9,2.2)
+qlnorm(0.95,1.90,2.20)#
+qlnorm(0.95,1.21,1.98)#
+qlnorm(0.95,1.49,1.88)#
+qlnorm(0.95,1.91,1.83)#
+qlnorm(0.95,1.12,1.80)#
+qlnorm(0.95,1.30,1.94)#
+qlnorm(0.95,1.00,1.27)#
+qlnorm(0.95,0.62,1.35)#
+qlnorm(0.95,0.10,0.60)#
+qlnorm(0.95,1.48,1.55)#
+qlnorm(0.95,1.00,1.04)#
+qlnorm(0.95,1.50,1.20)#
+qlnorm(0.95,1.94,1.20)#
+qlnorm(0.95,0.70,1.00)#
+qlnorm(0.95,1.10,0.94)#
+qlnorm(0.95,1.40,0.94)#
+qlnorm(0.95,1.11,1.05)#
+qlnorm(0.95,1.00,1.35)#
+qlnorm(0.95,1.08,1.31)#
+qlnorm(0.95,1.01,1.81)#
+qlnorm(0.95,1.90,1.40)#
+qlnorm(0.95,1.54,1.70)#
+qlnorm(0.95,1.50,1.20)#
+qlnorm(0.95,0.10,1.85)#
+qlnorm(0.95,1.50,1.03)#
+qlnorm(0.95,1.00,1.42)#
+qlnorm(0.95,1.28,1.29)#
+qlnorm(0.95,1.21,1.55)#
+qlnorm(0.95,1.71,1.14)#
+qlnorm(0.95,1.50,1.30)#
+qlnorm(0.95,1.26,1.49)#
+qlnorm(0.95,1.16,1.40)#
+qlnorm(0.95,1.37,1.47)#
+qlnorm(0.95,0.90,1.60)#
+qlnorm(0.95,0.50,1.10)#
+qlnorm(0.95,1.24,1.39)#
+qlnorm(0.95,1.28,1.55)#
+qlnorm(0.95,0.80,1.75)#
+qlnorm(0.95,0.90,1.10)#
+qlnorm(0.95,0.53,1.50)#
+qlnorm(0.95,1.00,1.22)#
+qlnorm(0.95,1.00,1.04)#
+qlnorm(0.95,1.51,1.44)#
+qlnorm(0.95,1.01,1.37)
+qlnorm(0.5,1.90,2.20)#
+qlnorm(0.5,1.21,1.98)#
+qlnorm(0.5,1.49,1.88)#
+qlnorm(0.5,1.91,1.83)#
+qlnorm(0.5,1.12,1.80)#
+qlnorm(0.5,1.30,1.94)#
+qlnorm(0.5,1.00,1.27)#
+qlnorm(0.5,0.62,1.35)#
+qlnorm(0.5,0.10,0.60)#
+qlnorm(0.5,1.48,1.55)#
+qlnorm(0.5,1.00,1.04)#
+qlnorm(0.5,1.50,1.20)#
+qlnorm(0.5,1.94,1.20)#
+qlnorm(0.5,0.70,1.00)#
+qlnorm(0.5,1.10,0.94)#
+qlnorm(0.5,1.40,0.94)#
+qlnorm(0.5,1.11,1.05)#
+qlnorm(0.5,1.00,1.35)#
+qlnorm(0.5,1.08,1.31)#
+qlnorm(0.5,1.01,1.81)#
+qlnorm(0.5,1.90,1.40)#
+qlnorm(0.5,1.54,1.70)#
+qlnorm(0.5,1.50,1.20)#
+qlnorm(0.5,0.10,1.85)#
+qlnorm(0.5,1.50,1.03)#
+qlnorm(0.5,1.00,1.42)#
+qlnorm(0.5,1.28,1.29)#
+qlnorm(0.5,1.21,1.55)#
+qlnorm(0.5,1.71,1.14)#
+qlnorm(0.5,1.50,1.30)#
+qlnorm(0.5,1.26,1.49)#
+qlnorm(0.5,1.16,1.40)#
+qlnorm(0.5,1.37,1.47)#
+qlnorm(0.5,0.90,1.60)#
+qlnorm(0.5,0.50,1.10)#
+qlnorm(0.5,1.24,1.39)#
+qlnorm(0.5,1.28,1.55)#
+qlnorm(0.5,0.80,1.75)#
+qlnorm(0.5,0.90,1.10)#
+qlnorm(0.5,0.53,1.50)#
+qlnorm(0.5,1.00,1.22)#
+qlnorm(0.5,1.00,1.04)#
+qlnorm(0.5,1.51,1.44)#
+qlnorm(0.5,1.01,1.37)
+x <- seq(0,1,0.01)
+y <- x
+plot(x,y)
+plot(x,y,type="l")
+y1 <- sqrt(1-x**2)
+plot(x,y1,type="l")
+y1 <- sqrt(1-((x+1)/2)**2)
+plot(x,y1,type="l")
+y1 <- sqrt(1-(2x-1)**2)
+y1 <- sqrt(1-(2*x-1)**2)
+plot(x,y1,type="l")
+y1 <- 0.5*sqrt(1-(2*x-1)**2)
+plot(x,y1,type="l")
+y2 <- 0.5*sqrt(1-(2*x-1)**2)
+y1 <- x
+plot(x,y1+y2,type="l")
+y2 <- 0.2*sqrt(1-(2*x-1)**2)
+plot(x,y1+y2,type="l")
+lines(x,y)
+plot(x,y2,type="l",xlim=c(0,1),ylim=c(0,1))
+x <- seq(0,100,1)
+x
+x <- seq(0,100,0.01)
+x
+x <- seq(0,1,0.01)
+x
+y <- exp(x)
+plot(x,y)
+y <- dexp(x)
+plot(x,y)
+plot(x, y, type="l")
+y <- dexp(x, 2)
+plot(x, y, type="l")
+plot(x, y, type="l", xlim=c(0,1), ylim=c(0,1))
+y <- dexp(x, 1)
+plot(x, y, type="l", xlim=c(0,1), ylim=c(0,1))
+y <- dexp(10*x, 1)
+plot(x, y, type="l", xlim=c(0,1), ylim=c(0,1))
+y <- dexp(10*x, 2)
+plot(x, y, type="l", xlim=c(0,1), ylim=c(0,1))
+y <- dexp(2*x, 1)
+plot(x, y, type="l", xlim=c(0,1), ylim=c(0,1))
+y <- dexp(1.5*x, 1)
+plot(x, y, type="l", xlim=c(0,1), ylim=c(0,1))
+y1 <- dexp(1.5*x, 1)
+y2 <- dexp(1.5*x, 2)
+y3 <- dexp(1.5*x, 3)
+y4 <- dexp(1.5*x, 4)
+plot(x, y1, type="l", xlim=c(0,1), ylim=c(0,1))
+lines(x, y2)
+lines(x, y3)
+lines(x, y4)
+y40 <- dexp(1.5*x, 40)
+lines(x, y40)
+y2 <- dexp(1.5*x, 5)
+lines(x, y2)
+library(devtools)
+devtools::install_github("richelbilderbeek/babette")
+library(babette)
+posterior <- run_beast2(#
+  "test_output_0.fas"#
+)
+quit()
+plot(c(100, 250), c(300, 450), type = "n", xlab = "", ylab = "",#
+     main = "2 x 11 rectangles; 'rect(100+i,300+i,  150+i,380+i)'")
+plot(c(100, 250), c(300, 450), xlab = "", ylab = "",#
+     main = "2 x 11 rectangles; 'rect(100+i,300+i,  150+i,380+i)'")
+setwd("~/Documents/Professional/Positions/2017_2018_Basel/projects/kumara_comment/res/tables")
+t <- read.table("tip_lengths.txt")
+hist(t)
+hist(t$V1)
+summary(t$V1)
+hist(t$V1)
+hpd(t$V1)
+library(coda)
+coda?
+q
+?coda
+??coda
+HPDinterval(t$V1)
+t$V1
+? HPDinterval
+data(t$V1)
+library(HDInterval)
+library(HDInterval)
+hdi(t$V1)
