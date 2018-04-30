@@ -52,8 +52,11 @@ Notably, the "coalescent" RevBayes analysis (implementing the multi-species coal
 
 <i>Analyses with RevBayes appear to be incomplete.</i> My replication of the "conventional" RevBayes analysis (see step 6 above) did not show sufficient signs of stationarity after 5 million MCMC iterations, the number of iterations that was probably also used by the authors (even though they reported in the paper that they used 500,000). The stationarity of MCMC analyses is commonly assessed by "effective sample size" (ESS) values for the different model parameters, and as a rule of thumb all of these ESS values should be above 200, otherwise the analysis is considered incomplete and estimates may be unreliable. In short, analyses with ESS values below 200 are not usually published. In my replication of the "conventional divergence time estimation" of [Muñoz-Rodríguez et al. (2018)](https://www.cell.com/current-biology/abstract/S0960-9822(18)30321-X), some of the ESS values are as low as 8, and even the ESS value for the posterior probability, arguably the most important ESS value to assess stationarity, is only 66. This indicates that these analyses should have been extended, ten-fold or more, before reporting on them in a manuscript. The incompleteness of the RevBayes analyses could explain the differences found between my reanalysis shown above and the original analysis shown in Figure 7b of [Muñoz-Rodríguez et al. (2018)](https://www.cell.com/current-biology/abstract/S0960-9822(18)30321-X). The image below shows the trace of the posterior probability, in which the strong autocorrelation between consecutive samples indicates that the posterior distribution has not been sampled sufficiently.<p align="center"><img src="img/tracer.png" alt="Trace plot for the posterior probability" width="600"></p>
 
-### Update
+### Updates
 
+##### 30 April 2018
+
+I have been pointed to this excellent quote in a 20-year old letter to American Journal Human Genetics by [Barbujani et al. (1998)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1376895/pdf/9463326.pdf) that nicely sums up the issue with the conclusions of [Muñoz-Rodríguez et al. (2018)](https://www.cell.com/current-biology/abstract/S0960-9822(18)30321-X): "Suppose that some Europeans colonize Mars next year: If they successfully establish a population, the common mitochondrial ancestor of their descendants will be Paleolithic. But it would not be wise for a population geneticist of the future to infer from that a Paleolithic colonization of Mars."
 
 ##### 28 April 2018
 
